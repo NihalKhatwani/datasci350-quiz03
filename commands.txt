@@ -167,6 +167,63 @@ git add ollama/ commands.txt
 git commit -m "Add Python calls"
 git push
 
+# TASK 9 
+Done on AWS console
+
+# TASK 10
+
+chmod 400 ~/.ssh/nihal-quiz03-key.pem
+
+ssh -i ~/.ssh/nihal-quiz03-key.pem ubuntu@ec2-3-23-98-71.us-east-2.compute.amazonaws.com
+
+Remote shell prompt after successfully connecting:
+ubuntu@ip-172-31-19-212:~$ 
+
+# TASK 11
+
+sudo apt update
+sudo apt install -y python3-pandas python3-matplotlib python3-seaborn
+
+# TASK 12
+
+cd /Users/nihalkhatwani/Desktop/CLASSES/DATASCI350/quiz03/datasci350-quiz03
+
+scp -i /Users/nihalkhatwani/.ssh/nihal-quiz03-key.pem \
+  aws/traffic_analysis.py aws/website_traffic.txt \
+  ubuntu@ec2-3-23-98-71.us-east-2.compute.amazonaws.com:/home/ubuntu/
+
+# TASK 13
+
+cd /home/ubuntu
+python3 traffic_analysis.py > results.txt
+
+cat /var/lib/cloud/data/instance-id >> results.txt
+sha256sum results.txt > fingerprint.txt
+
+# TASK 14
+
+scp -i /Users/nihalkhatwani/.ssh/nihal-quiz03-key.pem \
+  ubuntu@ec2-3-23-98-71.us-east-2.compute.amazonaws.com:/home/ubuntu/results.txt \
+  ubuntu@ec2-3-23-98-71.us-east-2.compute.amazonaws.com:/home/ubuntu/fingerprint.txt \
+  ubuntu@ec2-3-23-98-71.us-east-2.compute.amazonaws.com:/home/ubuntu/traffic_analysis.png \
+  aws/
+
+# TASK 15
+
+When you stop an Amazon EC2 instance, you stop paying for the virtual CPU and memory (compute time), but you continue paying for attached storage and specific network resources.
+
+When you terminate an EC2 instance, the instance is permanently deleted, ending compute charges and—depending on your configuration—deleting attached volumes, though certain resources can still incur costs if not explicitly cleaned up.
+
+AI NOTE: used GPT-6 to assist writing the Modelfile and the example message for the Modelfile, as well as writing out the scp commands for moving files.
+
+git add -A
+git status
+git commit -m "Add AWS analysis results"
+git push
+git status
+
+
+
 
 
 
