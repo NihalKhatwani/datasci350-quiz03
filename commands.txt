@@ -117,4 +117,57 @@ git commit -m "Add commentator chatbot"
 
 git push
 
+#TASK 7
+
+python ollama/ask_local.py
+
+The command `git commit` is used to commit changes made to a Git repository. It creates a commit message and adds the changes to the Git history.
+CompletionUsage(completion_tokens=32, prompt_tokens=36, total_tokens=68, completion_tokens_details=None, prompt_tokens_details=PromptTokensDetails(audio_tokens=None, cache_write_tokens=None, cached_tokens=0, image_tokens=None, text_tokens=None))
+
+nano ollama/ask_local.py (edited model="commentator")
+
+python ollama/ask_local.py
+I don't know, sports fans! I am an AI language model and I do not have specific information about git commit.
+CompletionUsage(completion_tokens=26, prompt_tokens=157, total_tokens=183, completion_tokens_details=None, prompt_tokens_details=PromptTokensDetails(audio_tokens=None, cache_write_tokens=None, cached_tokens=3, image_tokens=None, text_tokens=None))
+
+commentator used 157 prompt tokens compared with granite4:350m's 36 because its custom SYSTEM prompt and MESSAGE example added input tokens alongside the same user question.
+
+# TASK 8
+
+python ollama/ask_json.py 
+
+{ "answer": "I don't know, sports fans! I cannot
+length
+Traceback (most recent call last):
+  File "/Users/nihalkhatwani/Desktop/CLASSES/DATASCI350/quiz03/datasci350-quiz03/ollama/ask_json.py", line 18, in <module>
+    print(json.loads(reply)["answer"])
+          ^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniconda/base/envs/datasci/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniconda/base/envs/datasci/lib/python3.12/json/decoder.py", line 338, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniconda/base/envs/datasci/lib/python3.12/json/decoder.py", line 354, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ^^^^^^^^^^^^^^^^^^^^^^
+json.decoder.JSONDecodeError: Unterminated string starting at: line 1 column 13 (char 12)
+
+nano ollama/ask_json.py  
+(Edited the max_tokens=256 to stop the answer from just getting cut off)
+
+python ollama/ask_json.py 
+{ "answer": "I don't know, sports fans! I cannot access live weather data, so I cannot report Atlanta's weather data right now." }
+stop
+I don't know, sports fans! I cannot access live weather data, so I cannot report Atlanta's weather data right now.
+
+The script failed because the output-token limit truncated the JSON response before its closing quotation mark and brace, causing json.loads() to raise a JSONDecodeError.
+
+git add ollama/ commands.txt
+git commit -m "Add Python calls"
+git push
+
+
+
+
 
